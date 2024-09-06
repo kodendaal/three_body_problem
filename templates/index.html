@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3-Body Problem Simulation</title>
+</head>
+<body>
+    <h1>3-Body Problem Simulation</h1>
+    <button onclick="runSimulation()">Run Simulation</button>
+    <div id="results"></div>
+    <script>
+        function runSimulation() {
+            fetch('/simulate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({/* simulation parameters */})
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('results').innerText = JSON.stringify(data);
+            });
+        }
+    </script>
+</body>
+</html>
